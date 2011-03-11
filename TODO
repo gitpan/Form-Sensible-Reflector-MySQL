@@ -1,0 +1,9 @@
+TO DO
+
+* Check the float validation and tests
+
+* Form::Simple::Field::Number bugs as reported to the Google Group:
+	* Check they are fixed
+	* Remove the TODO around the effected tests
+
+
