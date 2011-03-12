@@ -4,6 +4,7 @@ use utf8;
 use lib qw( ../lib lib );
 
 package Local::Fixtures;
+our $VERSION = 0.2;
 
 =head1 NAME
 
@@ -48,21 +49,20 @@ foreach my $cred (@cred){
 	last if $dbh;
 }
 
-# Re-enable default DBH behaviour
-$dbh->{PrintWarn}  = 1;
-$dbh->{PrintError} = 1;
-
 our $table_name = 'test_98127645';
 
 END {
-	# $dbh->do("DROP TABLE $table_name") if $dbh and not $ENV{LEE_TESTING};	
+	$dbh->do("DROP TABLE $table_name") if $dbh and not $ENV{LEE_TESTING};	
 }
 
 our $col_comment = 'My Tiny Integer Signed';
 our $table_comment = 'This is a test table - delete it, please';
 our $default_text = 'This is default text';
 
-if ($dbh){
+if ($dbh and ref $dbh){
+	
+	$dbh->{PrintWarn}  = 1;
+	$dbh->{PrintError} = 1;
 	
 	$dbh->do("DROP TABLE IF EXISTS $table_name ");
 	$dbh->do("CREATE TABLE $table_name (
