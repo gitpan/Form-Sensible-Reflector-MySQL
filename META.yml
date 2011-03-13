@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Form-Sensible-Reflector-MySQL
-version:            0.2
+version:            0.3
 abstract:           Create a Form::Sensible object from a MySQL schema
 author:
     - Lee Goddard <lgoddard@cpan.org>
@@ -12,6 +12,7 @@ requires:
     DateTime::Format::MySQL:  0.04
     DBD::mysql:           1
     DBI:                  1
+    Form::Sensible:       0.20012
     Form::Sensible::Reflector:  0
     Math::BigInt:         0.1
     Test::Most:           0.23
