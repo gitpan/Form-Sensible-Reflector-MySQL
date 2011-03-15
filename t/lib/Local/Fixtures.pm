@@ -38,15 +38,27 @@ my @cred = (
 		[root => 'pass'],
 );
 
-foreach my $cred (@cred){
-	($test_user, $test_password) = @$cred;
-	$dbh = eval {
-		DBI->connect( $test_dsn, $test_user, $test_password, {
-			PrintWarn => 0,
-			PrintError => 0,
-		} );
-	};
-	last if $dbh;
+
+
+# Try Test::Database
+eval 'require Test::Database';
+if (not $@){
+	use Data::Dumper;
+	my @handles = Test::Database->handles( { dbd => 'mysql' } );
+	$dbh = $handles[0]->dbh() if $handles[0];
+}
+
+if (not $dbh){
+	foreach my $cred (@cred){
+		($test_user, $test_password) = @$cred;
+		$dbh = eval {
+			DBI->connect( $test_dsn, $test_user, $test_password, {
+				PrintWarn => 0,
+				PrintError => 0,
+			} );
+		};
+		last if $dbh;
+	}
 }
 
 our $table_name = 'test_98127645';

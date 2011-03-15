@@ -850,7 +850,7 @@ Please make use of CPAN's Request Tracker.
 
 =head1 SEE ALSO
 
-The MySQL Manual, L<Chater 10: Data Types|http://dev.mysql.com/doc/refman/5.0/en/data-types.html>.
+The MySQL Manual, L<Chater 10 Data Types|http://dev.mysql.com/doc/refman/5.0/en/data-types.html>.
 
 L<Form::Sensible|Form::Sensible>,
 L<Form::Sensible::Reflector|Form::Sensible::Reflector>,

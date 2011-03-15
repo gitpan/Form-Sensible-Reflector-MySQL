@@ -12,7 +12,6 @@ die_on_fail;
 use Local::Fixtures;
 use Local::Tests;
 
-# eval { use Log::Log4perl ':easy'; Log::Log4perl->easy_init( $TRACE ); };
 
 if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 

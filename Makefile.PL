@@ -7,7 +7,7 @@ WriteMakefile(
   license( 'perl' ),
   NAME          => 'Form::Sensible::Reflector::MySQL',
   AUTHOR        => 'Lee Goddard <lgoddard@cpan.org>',
-  VERSION	    => 0.4,
+  VERSION	    => 0.5,
   ABSTRACT_FROM => 'lib/Form/Sensible/Reflector/MySQL.pm',
   PL_FILES      => {},
   PREREQ_PM     => {

@@ -20,11 +20,7 @@ if ( not $Local::Fixtures::dbh ){
 use Form::Sensible;
 use Form::Sensible::Reflector::MySQL;
 
-eval { use Log::Log4perl ':easy'; Log::Log4perl->easy_init( $TRACE ) };
-	
-
 my $reflector = Form::Sensible::Reflector::MySQL->new();
-
 
 # Do both text and blob columns:
 our %col2len = (
@@ -46,7 +42,6 @@ while (my ($colbase, $max) = each %col2len){
 			$col =~ s/char/binary/;
 			$col =~ s/text/blob/;
 		}
-		TRACE $col;
 		
 		my $options = { 
 			form_name => $Local::Fixtures::table_name,
