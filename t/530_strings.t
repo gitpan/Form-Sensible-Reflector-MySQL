@@ -17,10 +17,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 }
 
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 eval { use Log::Log4perl ':easy'; Log::Log4perl->easy_init( $TRACE ) };
 	
@@ -74,6 +72,6 @@ while (my ($colbase, $max) = each %col2len){
 	}
 }
 
-done_testing(32);
+done_testing(30);
 
 

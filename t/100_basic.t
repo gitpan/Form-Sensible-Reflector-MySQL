@@ -17,10 +17,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 } 
 
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 
 my $options = { 
@@ -49,5 +47,5 @@ $form->add_field(
 	)
 );
 
-done_testing( 48 );
+done_testing( 46 );
 

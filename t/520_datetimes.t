@@ -18,10 +18,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 }
 
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 	
 my $options = { 
 	form_name => $Local::Fixtures::table_name,
@@ -142,5 +140,5 @@ for my $i (0, -1, 100, 1900, 2156){
 	like( $form->validate->error_fields->{'my_year2'}->[0], qr'between', 'bad default-digit year '.$i.' custom error message');
 }
 
-done_testing(54);
+done_testing(52);
 

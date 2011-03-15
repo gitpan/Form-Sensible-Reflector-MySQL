@@ -16,10 +16,8 @@ BEGIN {
 	} 
 }
 
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 isa_ok( $Local::Fixtures::dbh, 'DBI::db' );
 
@@ -106,7 +104,7 @@ SKIP:{
 	);
 }
 
-done_testing(14);
+done_testing(12);
 
 
 

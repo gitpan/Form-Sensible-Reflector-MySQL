@@ -27,10 +27,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 } 
 	
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 my (@rv);
 	
@@ -104,5 +102,5 @@ foreach my $col ('my_decimalmd', 'my_numericmd'){
 
 }
 	
-done_testing(14);
+done_testing(12);
 

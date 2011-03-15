@@ -18,11 +18,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 } 
 
-
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 	
 
 my $options = { 
@@ -70,6 +67,6 @@ isa_ok($form, 'Form::Sensible::Form');
 @three_fields = $form->get_fields;
 isnt(scalar(@three_fields), scalar(@all_fields), 'limited fields');
 
-done_testing(7);
+done_testing(5);
 
 

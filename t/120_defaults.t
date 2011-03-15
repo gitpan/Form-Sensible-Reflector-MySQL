@@ -17,8 +17,8 @@ if ( not $Local::Fixtures::dbh ){
 } 
 	
 
-use_ok('Form::Sensible');
-use_ok("Form::Sensible::Reflector::MySQL");
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 isa_ok(
 	$Local::Fixtures::dbh,
@@ -59,4 +59,4 @@ isnt(
 	'not default text in empty record'
 );
 
-done_testing( 51 );
+done_testing( 49 );

@@ -18,10 +18,8 @@ if ( not $Local::Fixtures::dbh ){
 	plan skip_all => 'No DBH - please set ENV{DBI_USER} and ENV{DBI_PASS}'; 
 } 
 
-BEGIN {
-	use_ok('Form::Sensible');
-	use_ok("Form::Sensible::Reflector::MySQL");
-}
+use Form::Sensible;
+use Form::Sensible::Reflector::MySQL;
 
 die_on_fail;
 
@@ -328,5 +326,5 @@ $form->field('my_bigint_u')->value( 0 );
 is( $form->field('my_bigint_u')->validate, 0, 'bigint u 0 ok' );
 
 
-done_testing( 66 );
+done_testing( 64 );
 
