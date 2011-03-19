@@ -68,7 +68,7 @@ END {
 }
 
 our $col_comment = 'My Tiny Integer Signed';
-our $table_comment = 'This is a test table - delete it, please';
+our $table_comment = 'This is a test table; delete it, please.';
 our $default_text = 'This is default text';
 
 if ($dbh and ref $dbh){

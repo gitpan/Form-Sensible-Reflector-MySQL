@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 package Form::Sensible::Reflector::MySQL;
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 =head1 NAME
 
@@ -185,6 +185,7 @@ source code for the required keys.
 
 =cut
 
+use Form::Sensible 0.20012;
 use Form::Sensible::Form;
 use Form::Sensible::Field;
 use Form::Sensible::Field::Trigger;
@@ -368,13 +369,15 @@ sub reflect_from {
 			);
 		}
 		# form display name:
-		$self->form_display_name(
-			$options->{information_schema_dbh}->selectrow_array(
-				"SELECT table_comment FROM TABLES WHERE table_name=?",
-				{}, 
-				$form->{name}
-			)
+		my $n =  $options->{information_schema_dbh}->selectrow_array(
+			"SELECT table_comment FROM TABLES WHERE table_name=?",
+			{}, 
+			$form->{name}
 		);
+		# See http://www.cpantesters.org/cpan/report/921265d4-5157-11e0-9084-0c635704ce1c
+		# ; InnoDB free: 52224 kB
+		$n =~ s/;\sInnoDB\sfree:\s\d+\s.B$//;
+		$self->form_display_name( $n );
 	}
 	
 	return $form;
