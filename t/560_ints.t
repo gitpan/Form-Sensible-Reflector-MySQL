@@ -262,12 +262,15 @@ like(
 $form->field('my_bigint_s')->value( -9223372036854775809 );
 
 is( $form->field('my_bigint_s')->value, -9223372036854775809, 'big int signed');
-like(  
-	$form->validate->error_fields->{'my_bigint_s'}->[0], 
-	qr'lower', 
-	'big int s lower'
-); 
-
+TODO: {
+	local $TODO = 'Error messages vary between versions of Form::Sensible';
+	# http://www.cpantesters.org/cpan/report/3af9e5c6-520e-11e0-8a1e-03415704ce1c
+	like(  
+		$form->validate->error_fields->{'my_bigint_s'}->[0], 
+		qr'lower', 
+		'big int s lower'
+	); 
+}
 
 $form->field('my_bigint_s')->value( -9223372036854775808 );
 is( $form->field('my_bigint_s')->validate, 0, 'bigint s -9223372036854775808 ok');

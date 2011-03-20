@@ -120,9 +120,10 @@ TODO: {
 		not scalar keys %{ $form->validate->error_fields },
 		'Errors on enum, double'
 	); 
+	ok(	$form->validate->error_fields->{$col}->[0], 'error field');
 	like( 
 		$form->validate->error_fields->{$col}->[0],
-		qr'invalid',
+		qr/invalid/,
 		'invalid double selection on enum'
 	); 
 
@@ -131,5 +132,5 @@ TODO: {
 
 
 
-done_testing( 15 );
+done_testing( 16 );
 

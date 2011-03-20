@@ -87,10 +87,14 @@ is(
 );
 
 $form->field($col)->value( 18446744073709551615 );
-like( 
-	$form->validate->error_fields->{$col}->[0],
-	qr'3'
-); 
+TODO: {
+	local $TODO = 'Error messages vary between versions of Form::Sensible';
+	# http://www.cpantesters.org/cpan/report/3af9e5c6-520e-11e0-8a1e-03415704ce1c
+	like( 
+		$form->validate->error_fields->{$col}->[0],
+		qr'3'
+	); 
+}
 
 is(
 	$form->field($col)->{upper_bound},
